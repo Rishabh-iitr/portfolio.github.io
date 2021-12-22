@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 1170px)" href="css/phone.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="/img/logo.png" alt="portfolio">
+        </div>
+        <ul>
+            <li class="item"><a href="#home">Home</a></li>
+            <li class="item"><a href="#about-me">About Me</a></li>
+            <li class="item"><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 class="h-primary">Hi, I'm Rishabh <br>
+            <span class="typed-text"></span><span class="cursor">&nbsp</span></h1><br>
+    </section>
+
+
+
+
+    <section id="about-me">
+        <h1 class="h-primary center">My Hobbies</h1>
+        <div id="services">
+            <div class="box">
+                <img src="img/coin.jpg" alt="coin">
+                <h2 class="h-secondary center">Collecting Coins</h2>
+                <p class="center">I love to collect the old and antique coins as well as currency.I also made an album of it.</p>
+                </div>
+                <div class="box">
+                    <img src="img/Ludo.jpg" alt="ludo_img">
+                    <h2 class="h-secondary center">Playing Ludo</h2>
+                    <p class="center">I love to play Ludo with my friends.</p>
+                </div>
+            <div class="box">
+                <img src="img/friend.jpg" alt="Friend">
+                <h2 class="h-secondary center">Spending Time with Friends</h2>
+                <p class="center">I also love to spend good time with my friends.</p>
+            </div>
+            
+        </div>
+        <h1 class="h-primary center">My Coding Interest</h1>
+        <div id="services">
+            <div class="box">
+                <img src="img/DEVELOPMENT.png" alt="Development">
+                <h2 class="h-secondary center">DEVELOPMENT</h2>
+                <p class="center">Currently learning on web development. looking forward to work on android development
+                    also.</p>
+            </div>
+            <div class="box">
+                <img src="img/C++.png" alt="C++">
+                <h2 class="h-secondary center">C ++</h2>
+                <p class="center">Currently learning C++ and want to do competitive coding in c++ as well.</p>
+            </div>
+            <div class="box">
+                <img src="img/JAVA.png" alt="Java">
+                <h2 class="h-secondary center">JAVA</h2>
+                <p class="center">Currently willing to learn this language . after learning this , thinking to make some
+                    wonderful projects.</p>
+            </div>
+            
+        </div>
+
+    </section>
+
+
+    <section id="contact">
+        <h1 class="h-primary center">Contact Me </h1>
+
+
+
+        <div id="contact-box">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" name="name" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number: </label>
+                    <input type="phone" name="name" id="phone" placeholder="Enter your phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="Submit" id="Submit" class="submit2" value="Contact Me" >
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="center">
+            Copyright &copy; Rishabh Kumar | All rights reserved
+        </div>
+    </footer>
+
+
+    <script>
+        const typedTextSpan = document.querySelector(".typed-text");
+        const cursorSpan = document.querySelector(".cursor");
+
+        const textArray = [ "I am Student of IIT Roorkee", "I want to Became a member of Team Cognizance"];
+        const typingDelay = 100;
+        const erasingDelay = 10;
+        const newTextDelay = 100; 
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                cursorSpan.classList.remove("typing");
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                
+                if (!cursorSpan.classList.contains("typing")) {
+                    cursorSpan.classList.add("typing");
+                }
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, 0);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                cursorSpan.classList.remove("typing");
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () { 
+            if (textArray.length) setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+
+
+</body>
+
+</html>
